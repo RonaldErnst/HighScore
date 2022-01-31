@@ -1,0 +1,2 @@
+# HighScore
+High Score
