@@ -2,7 +2,8 @@
 Eine Web App, mit der man ein Rating von 0-10 festhalten kann.
 
 # Konzept
-TODO
+Backend : NodeJS (API -> Express)
+Frontend: Tailwind & JS
 
 # TODOs
 1. Eigene lokale Branches: dev-ronald, dev-luca, dev-luis
