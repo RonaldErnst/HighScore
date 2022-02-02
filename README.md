@@ -24,14 +24,14 @@ Eine Web App, mit der man ein Rating von 0-10 festhalten kann.
       4. Datenbank & Tabellenstruktur: Firebase
 
 # Front-End TODOs
-**NodeJS**
+**NodeJS**  
 1. Seite für Login
 2. Seite für Signup
 3. Seite für Dashboard, fürs erste mal nur die vom Benutzer angelegten Einträge anzeigen
 4. Seite für Ändern der Credentials (Email und passwort bis jetzt nur)
 
 # API TODOs
-1. Endpunkte für Routes implementieren
+1. Endpunkte für Routes implementieren  
 /api/user/login  
 /api/user/add-user  
 /api/entry/add-entry  
@@ -39,7 +39,7 @@ Eine Web App, mit der man ein Rating von 0-10 festhalten kann.
 /api/entry/get-all/{user}  
 
 # Back-End TODOs
-**NodeJS & Firebase**
+**NodeJS & Firebase**  
 1. Funktion zum anlegen eines Benutzers
 2. Funktion zum abmelden eines Benutzers
 3. Funktion zum ändern der email & passwort
