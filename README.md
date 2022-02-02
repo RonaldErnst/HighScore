@@ -2,8 +2,9 @@
 Eine Web App, mit der man ein Rating von 0-10 festhalten kann.
 
 # Konzept
-- Backend : NodeJS (API -> Express)
-- Frontend: Tailwind & JS
+- Benutzer mit Accounts
+- Unterschiedliche Kategorien (Gras, Shisha, etc.)
+- Unterschiedliche Zusammenfassungen & Statistiken
 
 # TODOs
 1. Eigene lokale Branches: dev-ronald, dev-luca, dev-luis
@@ -11,9 +12,9 @@ Eine Web App, mit der man ein Rating von 0-10 festhalten kann.
    1. Allgemeine Funktionalitäten (Später: Details ausarbeiten)
    2. Implementationsdesign erstellen
       1. Front-End Design https://www.figma.com/file/1fLsNXauo0nEMxsShKYgDb/HighScore?node-id=2%3A2
-      2. API Schnittstellen
-      3. Back-End Design
-      4. Datenbank & Tabellenstruktur
+      2. API Schnittstellen: Express
+      3. Back-End Design: NodeJS
+      4. Datenbank & Tabellenstruktur: Firebase
 3. Implementation
    1. Front-End
    2. API-Layer
