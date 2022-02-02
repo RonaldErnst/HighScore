@@ -7,10 +7,11 @@ Eine Web App, mit der man ein Rating von 0-10 festhalten kann.
 - Unterschiedliche Zusammenfassungen & Statistiken
 
 # Routes
-/ **Dashboard**
-/login
-/signup
-/add-entry
+/ **\[Dashboard\]**  
+/login  
+/signup  
+/add-entry  
+
 
 # TODOs
 1. Eigene lokale Branches: dev-ronald, dev-luca, dev-luis
@@ -31,11 +32,11 @@ Eine Web App, mit der man ein Rating von 0-10 festhalten kann.
 
 # API TODOs
 1. Endpunkte für Routes implementieren
-/api/user/login
-/api/user/add-user
-/api/entry/add-entry
-/api/entry/get-all
-/api/entry/get-all/{user}
+/api/user/login  
+/api/user/add-user  
+/api/entry/add-entry  
+/api/entry/get-all  
+/api/entry/get-all/{user}  
 
 # Back-End TODOs
 **NodeJS & Firebase**
