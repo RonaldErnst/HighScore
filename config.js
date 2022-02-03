@@ -2,7 +2,11 @@
 const dotenv = require('dotenv');
 const assert = require('assert');
 
-dotenv.config();
+if (process.env && process.env.NODE_ENV) {
+    dotenv.config({path: '.env.' + process.env.NODE_ENV});
+} else {
+    dotenv.config({path: '.env.development'});
+}
 
 const {
     HOST,
