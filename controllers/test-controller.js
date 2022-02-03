@@ -1,8 +1,7 @@
 'use strict';
 
-const firebase = require('../firebase');
+const { firestore } = require('../firebase');
 const TestModel = require('../models/TestModel');
-const firestore = firebase.firestore();
 
 
 const testFunction = async (req, res, next) => {
