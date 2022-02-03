@@ -10,6 +10,8 @@ const testFunction = async (req, res, next) => {
         const data = req.body;
         const test = new TestModel("Hello World");
         console.log(test.getText());
+        res.status(200)
+        res.send(test.getText())
     } catch (error) {
         res.status(400).send(error.message);
     }

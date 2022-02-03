@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const config = require('./config');
-const testApi = require('./routes/test-api');
+const { routes } = require('./routes/test-api');
 
 const app = express();
 
@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }))
 
 
-app.use('/api', testApi);
+app.use('/api', routes);
 
 app.get('/login', checkNotAuthenticated, (req, res) => {
   res.render('login.ejs');
@@ -25,6 +25,13 @@ function checkAuthenticated(req, res, next) {
   }
 
   res.redirect('/login');
+}
+
+function checkNotAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return res.redirect('/')
+  }
+  next()
 }
 
 app.listen(config.port, () => console.log('App is listening on url http://localhost:' + config.port));
