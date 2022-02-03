@@ -6,3 +6,8 @@
 - Wie gut wirkt es?
 - Daten werden auf Graph ausgegeben
 - Ranking -> Wer hat am öftesten?
+
+## Zukunft:
+
+- Wann ist wahrscheinlich das man wieder raucht? Vorkalkulieren
+

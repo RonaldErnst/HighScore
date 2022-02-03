@@ -7,6 +7,8 @@ const { routes } = require('./routes/test-api');
 
 const app = express();
 
+var id, vname, nname, mail, pass;
+
 app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json());
@@ -15,8 +17,13 @@ app.use(express.urlencoded({ extended: false }))
 
 app.use('/api', routes);
 
-app.get('/login',/*checkNotAuthenticated,*/ (req, res) => {
+
+app.get('/login',/* checkNotAuthenticated, */(req, res) => {
   res.render('login.ejs');
+})
+
+app.get('/signup',/* checkNotAuthenticated, */(req, res) => {
+  res.render('signup.ejs');
 })
 
 function checkAuthenticated(req, res, next) {
@@ -32,6 +39,19 @@ function checkNotAuthenticated(req, res, next) {
     return res.redirect('/')
   }
   next()
+}
+
+function createUser(vname, nname, mail, pass) {
+  app.post("/create",async(req,res)=>{
+    const data = req.body;
+    await User.add({
+      "vname":vname,
+      "nname":nname,
+      "mail":mail,
+      "pass":pass
+    });
+    res.send({msg: "User Added"});
+  });
 }
 
 app.listen(config.port, () => console.log('App is listening on url http://localhost:' + config.port));
