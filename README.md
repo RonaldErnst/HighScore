@@ -6,12 +6,8 @@ Eine Web App, mit der man ein Rating von 0-10 festhalten kann.
 - Unterschiedliche Kategorien (Gras, Shisha, etc.)
 - Unterschiedliche Zusammenfassungen & Statistiken
 
-# Routes
-/ **\[Dashboard\]**  
-/login  
-/signup  
-/add-entry  
-
+# Server starten
+`npm start` ausführen oder VSCode so einstellen, dass NodeJS auf server.js zeigt
 
 # TODOs
 1. Eigene lokale Branches: dev-ronald, dev-luca, dev-luis
@@ -29,6 +25,12 @@ Eine Web App, mit der man ein Rating von 0-10 festhalten kann.
 2. Seite für Signup
 3. Seite für Dashboard, fürs erste mal nur die vom Benutzer angelegten Einträge anzeigen
 4. Seite für Ändern der Credentials (Email und passwort bis jetzt nur)
+
+# Routes
+/ **\[Dashboard\]**  
+/login  
+/signup  
+/add-entry  
 
 # API TODOs
 1. Endpunkte für Routes implementieren  
