@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: false }))
 
 app.use('/api', routes);
 
-app.get('/login', checkNotAuthenticated, (req, res) => {
+app.get('/login',/*checkNotAuthenticated,*/ (req, res) => {
   res.render('login.ejs');
 })
 
