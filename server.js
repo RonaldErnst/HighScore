@@ -1,31 +1,30 @@
-// Import the functions you need from the SDKs you need
+'use strict';
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const config = require('./config');
+const testApi = require('./routes/test-api');
 
-import { initializeApp } from "firebase/app";
+const app = express();
 
-// TODO: Add SDKs for Firebase products that you want to use
-
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-
-// Your web app's Firebase configuration
-// TODO testen ob das funktioniert
-const firebaseConfig = {
-
-  apiKey: process.env.FIREBASE_API_KEY,
-
-  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-
-  projectId: process.env.FIREBASE_PROJECT_ID,
-
-  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-
-  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-
-  appId: process.env.FIREBASE_APP_ID
-
-};
+app.use(express.json());
+app.use(cors());
+app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }))
 
 
-// Initialize Firebase
+app.use('/api', testApi);
 
-const app = initializeApp(firebaseConfig);
+app.get('/login', checkNotAuthenticated, (req, res) => {
+  res.render('login.ejs');
+})
+
+function checkAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+
+  res.redirect('/login');
+}
+
+app.listen(config.port, () => console.log('App is listening on url http://localhost:' + config.port));
