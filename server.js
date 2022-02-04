@@ -7,8 +7,6 @@ const { routes } = require('./routes/test-api');
 
 const app = express();
 
-var id, vname, nname, mail, pass;
-
 app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json());
