@@ -4,7 +4,7 @@ Eine Web App, mit der man ein Rating von 0-10 festhalten kann.
 # Konzept
 - Benutzer mit Accounts
 - Unterschiedliche Kategorien (Gras, Shisha, etc.)
-- Unterschiedliche Zusammenfassungen & Statistiken
+- Unterschiedliche Zusammenfassungen & Statistiken ([ChartJS](https://www.chartjs.org/))
 
 # Server starten
 `npm start` ausführen oder VSCode so einstellen, dass NodeJS auf server.js zeigt
