@@ -26,6 +26,10 @@ app.get('/signup',/* checkNotAuthenticated, */(req, res) => {
   res.render('signup.ejs');
 })
 
+app.get('/reset',/* checkNotAuthenticated, */(req, res) => {
+  res.render('reset-password.ejs');
+})
+
 function checkAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
