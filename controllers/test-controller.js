@@ -1,6 +1,6 @@
 'use strict';
 
-const { firestore } = require('../firebase');
+const { firestore } = require('../firebase/firebase');
 const TestModel = require('../models/TestModel');
 
 

@@ -2,9 +2,9 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const config = require('./firebase');
+const config = require('./firebase/firebase');
 const { routes } = require('./routes/test-api');
-const { firebase, fireauth } = require('./firebase');
+const { fireauth } = require('./firebase/firebase');
 
 const app = express();
 
@@ -34,5 +34,10 @@ function checkNotAuthenticated(req, res, next) {
   }
   next()
 }
+
+fireauth.createUser({
+  email: "test2@test.com",
+  password: "test123!"
+});
 
 app.listen(config.port, () => console.log('App is listening on url http://localhost:' + config.port));
