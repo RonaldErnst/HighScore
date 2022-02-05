@@ -4,6 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const config = require('./config');
 const { routes } = require('./routes/test-api');
+const { firebase, fireauth } = require('./firebase');
 
 const app = express();
 
@@ -34,17 +35,8 @@ function checkNotAuthenticated(req, res, next) {
   next()
 }
 
-function createUser(vname, nname, mail, pass) {
-  app.post("/create",async(req,res)=>{
-    const data = req.body;
-    await User.add({
-      "vname":vname,
-      "nname":nname,
-      "mail":mail,
-      "pass":pass
-    });
-    res.send({msg: "User Added"});
-  });
+function createUser(mail, pass) {
+  fireauth.createUser()
 }
 
 app.listen(config.port, () => console.log('App is listening on url http://localhost:' + config.port));
