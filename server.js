@@ -2,9 +2,9 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const config = require('./firebase/firebase');
+const config = require('./config');
 const { routes } = require('./routes/test-api');
-const { fireauth } = require('./firebase/firebase');
+const { fireauth } = require('./firebase');
 
 const app = express();
 
