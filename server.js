@@ -35,9 +35,4 @@ function checkNotAuthenticated(req, res, next) {
   next()
 }
 
-fireauth.createUser({
-  email: "test2@test.com",
-  password: "test123!"
-});
-
 app.listen(config.port, () => console.log('App is listening on url http://localhost:' + config.port));
