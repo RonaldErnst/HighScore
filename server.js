@@ -8,16 +8,26 @@ const { fireauth } = require('./firebase');
 
 const app = express();
 
+
 app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }))
-
+app.use(express.static("public"));
 
 app.use('/api', routes);
 
+
 app.get('/login',/* checkNotAuthenticated, */(req, res) => {
   res.render('login.ejs');
+})
+
+app.get('/signup',/* checkNotAuthenticated, */(req, res) => {
+  res.render('signup.ejs');
+})
+
+app.get('/reset',/* checkNotAuthenticated, */(req, res) => {
+  res.render('reset-password.ejs');
 })
 
 function checkAuthenticated(req, res, next) {
