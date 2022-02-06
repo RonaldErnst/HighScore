@@ -15,27 +15,27 @@ export default function Navigation({ active }) {
                             flex flex-row
                             text-2xl text-center">
 
-            <a href="" id="home" className={`w-1/4 py-6 ${active == "home" ? "bg-white":"bg-slate-300"} ${prevElem == "home"? "rounded-tr-2xl" : ""}`}>
+            <a href="/" id="home" className={`w-1/4 py-6 ${active == "home" ? "bg-white":"bg-slate-300"} ${prevElem == "home"? "rounded-tr-3xl" : ""}`}>
                 <div className="">
                     <i className="bi bi-house"></i>
                 </div>
             </a>
 
-            <a href="" className={`w-1/4 py-6 ${active == "dashboard" ? "bg-white":"bg-slate-300"} ${prevElem == "dashboard"? "rounded-tl-2xl" : ""}`}>
+            <a href="/dashboard" className={`w-1/4 py-6 ${active == "dashboard" ? "bg-white":"bg-slate-300"} ${prevElem == "dashboard"? "rounded-tr-3xl" : ""} ${afterElem == "dashboard"? "rounded-tl-3xl" : ""}`}>
                 <div className="">
-                    <i className="bi bi-house"></i>
+                    <i className="bi bi-graph-up"></i>
                 </div>
             </a>
 
-            <a href="" className={`w-1/4 py-6 ${active == "friends" ? "bg-white":"bg-slate-300"}`}>
+            <a href="/friends" className={`w-1/4 py-6 ${active == "friends" ? "bg-white":"bg-slate-300"} ${prevElem == "friends" ? "rounded-tr-3xl" : ""} ${afterElem == "friends" ? "rounded-tl-3xl" : ""}`}>
                 <div className="">
-                    <i className="bi bi-house"></i>
+                    <i className="bi bi-people"></i>
                 </div>
             </a>
 
-            <a href="" className={`w-1/4 py-6 ${active == "settings" ? "bg-white":"bg-slate-300"}`}>
+            <a href="/settings" className={`w-1/4 py-6 ${active == "settings" ? "bg-white":"bg-slate-300"} ${prevElem == "settings" ? "rounded-tr-3xl" : ""} ${afterElem == "settings" ? "rounded-tl-3xl" : ""}`}>
                 <div className="">
-                    <i className="bi bi-house"></i>
+                    <i className="bi bi-gear"></i>
                 </div>
             </a>
 
