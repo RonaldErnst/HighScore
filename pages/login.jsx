@@ -1,3 +1,6 @@
+import Link from "next/link";
+import React from 'react';
+
 export default function Login() {
 	return (
 		<div
@@ -73,18 +76,18 @@ export default function Login() {
 					</button>
 
 					<div className="flex items-center flex-row space-x-6">
-						<a
+						<Link
 							href="/register"
 							className="text-gray-800 hover:underline"
 						>
 							Register
-						</a>
-						<a
+						</Link>
+						<Link
 							href="/reset-password"
 							className="text-gray-800 hover:underline"
 						>
 							Forgot password
-						</a>
+						</Link>
 					</div>
 				</form>
 			</div>

@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function ResetPassword() {
 	return (
 		<div
@@ -56,18 +58,18 @@ export default function ResetPassword() {
 					</button>
 
 					<div className="flex items-center flex-row space-x-6">
-						<a
+						<Link
 							href="/login"
 							className="text-gray-800 hover:underline"
 						>
 							Login
-						</a>
-						<a
+						</Link>
+						<Link
 							href="/register"
 							className="text-gray-800 hover:underline"
 						>
 							Register
-						</a>
+						</Link>
 					</div>
 				</form>
 			</div>
