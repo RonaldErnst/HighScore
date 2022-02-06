@@ -1,18 +1,7 @@
-'use strict';
-var admin = require("firebase-admin");
+import firebase from "firebase";
+import { firebase_config } from './config';
 
-var serviceAccount = require("./serviceAccountKey.json");
+firebase.initializeApp(firebase_config);
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://highscore-41576-default-rtdb.europe-west1.firebasedatabase.app"
-});
-
-const firestore = admin.firestore()
-const fireauth = admin.auth();
-
-
-module.exports = {
-  firestore,
-  fireauth
-};
+export const firestore = admin.firestore()
+export const fireauth = admin.auth();
