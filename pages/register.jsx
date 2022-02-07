@@ -1,4 +1,38 @@
-export default function Register() {
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useRef, useState } from "react";
+import { withPublic } from "../components/Routing";
+import { useAuth } from "../contexts/AuthContext";
+
+function Register() {
+	const usernameRef = useRef();
+	const emailRef = useRef();
+	const passwordRef = useRef();
+	const passwordConfRef = useRef();
+	const [error, setError] = useState("");
+	const [loading, setLoading] = useState(false);
+	const router = useRouter();
+	const { registerUser } = useAuth();
+
+	async function handleSubmit(e) {
+		e.preventDefault();
+
+		if (passwordRef.current.value !== passwordConfRef.current.value) {
+			return setError("Passwords do not match");
+		}
+
+		try {
+			setError("");
+			setLoading(true);
+			await registerUser(usernameRef.current.value, emailRef.current.value, passwordRef.current.value);
+			router.push("/");
+		} catch(e) {
+			setError("Failed to create an account");
+		}
+
+		setLoading(false);
+	}
+
 	return (
 		<div
 			className="
@@ -12,8 +46,10 @@ export default function Register() {
 					HighScore
 				</h1>
 
+				{error && <div>{error}</div>}
+
 				<form
-					action="/signup"
+					onSubmit={handleSubmit}
 					className="grid items-center justify-items-center space-y-5"
 				>
 					<div
@@ -33,10 +69,11 @@ export default function Register() {
 							<i className="bi bi-person"></i>{" "}
 						</label>
 						<input
-							id="username"
+							ref={usernameRef}
 							name="username"
 							type="text"
 							placeholder="Username"
+							required
 							className="bg-transparent p-1 focus:outline-none"
 						/>
 					</div>
@@ -57,10 +94,11 @@ export default function Register() {
 							<i className="bi bi-envelope"></i>{" "}
 						</label>
 						<input
-							id="email"
+							ref={emailRef}
 							name="email"
 							type="email"
 							placeholder="E-Mail"
+							required
 							className="bg-transparent p-1 focus:outline-none"
 						/>
 					</div>
@@ -81,10 +119,11 @@ export default function Register() {
 							<i className="bi bi-lock"></i>{" "}
 						</label>
 						<input
-							id="password"
+							ref={passwordRef}
 							name="password"
 							type="password"
 							placeholder="Password"
+							required
 							className="bg-transparent p-1 focus:outline-none"
 						/>
 					</div>
@@ -105,15 +144,17 @@ export default function Register() {
 							<i className="bi bi-lock"></i>{" "}
 						</label>
 						<input
-							id="confirmPassword"
+							ref={passwordConfRef}
 							name="confirmPassword"
 							type="password"
 							placeholder="Confirm Password"
+							required
 							className="bg-transparent p-1 focus:outline-none"
 						/>
 					</div>
 
 					<button
+						disabled={loading}
 						type="submit"
 						className="w-1/2 bg-emerald-400 rounded-3xl shadow-2xl text-lg text-center font-semibold p-1"
 					>
@@ -121,21 +162,23 @@ export default function Register() {
 					</button>
 
 					<div className="flex items-center flex-row space-x-6">
-						<a
+						<Link
 							href="/login"
 							className="text-gray-800 hover:underline"
 						>
 							Login
-						</a>
-						<a
+						</Link>
+						<Link
 							href="/reset-password"
 							className="text-gray-800 hover:underline"
 						>
 							Forgot password
-						</a>
+						</Link>
 					</div>
 				</form>
 			</div>
 		</div>
 	);
 }
+
+export default withPublic(Register);
