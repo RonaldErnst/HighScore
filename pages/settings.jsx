@@ -6,7 +6,7 @@ export default function Settings() {
         <>
             <Header/>
 
-            <div className="mt-16 p-3">
+            <div className="mt-16 p-3 w-full md:w-1/2 lg:w-1/3 mx-auto">
 
                 <h1 className="text-xl">Einstellungen:</h1>
 
@@ -61,7 +61,7 @@ export default function Settings() {
 
                     <button
                         type="submit" className="w-1/2 bg-emerald-400 rounded-3xl shadow-2xl text-lg text-center font-semibold p-1">
-                        Login
+                        Speichern
                     </button>
 
                 </form>
