@@ -1,7 +1,33 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
+import React, { useState, useRef } from "react";
 import { withPublic } from "../components/Routing";
 
 function Login() {
+	const emailRef = useRef()
+  const passwordRef = useRef()
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
+  const router = useRouter();
+	//const { login } = useAuth(); TODO
+
+
+	async function handleSubmit(e) {
+    e.preventDefault();
+
+    try {
+      setError("");
+      setLoading(true);
+			// TODO login
+
+      router.push("/");
+    } catch {
+      setError("Failed to log in")
+    }
+
+    setLoading(false)
+  }
+
 	return (
 		<div
 			className="
@@ -15,8 +41,7 @@ function Login() {
 					HighScore
 				</h1>
 
-				<form
-					action="/login"
+				<form onSubmit={handleSubmit}
 					className="grid items-center justify-items-center space-y-5"
 				>
 					<div
@@ -28,18 +53,19 @@ function Login() {
 											text-lg
 											"
 					>
+						{/* TODO Error ausgeben */}
 						<label
-							htmlFor="username"
+							htmlFor="email"
 							className="grid items-center justify-items-center px-2"
 						>
 							{" "}
 							<i className="bi bi-person"></i>{" "}
 						</label>
 						<input
-							id="username"
-							name="username"
+							ref={emailRef}
+							name="email"
 							type="text"
-							placeholder="Username"
+							placeholder="E-Mail"
 							className="bg-transparent p-1 focus:outline-none"
 						/>
 					</div>
@@ -60,7 +86,7 @@ function Login() {
 							<i className="bi bi-lock"></i>{" "}
 						</label>
 						<input
-							id="password"
+							ref={passwordRef}
 							name="password"
 							type="password"
 							placeholder="Password"
@@ -69,6 +95,7 @@ function Login() {
 					</div>
 
 					<button
+						disabled={loading}
 						type="submit"
 						className="w-1/2 bg-emerald-400 rounded-3xl shadow-2xl text-lg text-center font-semibold p-1"
 					>

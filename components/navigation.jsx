@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 
 export default function Navigation({ active }) {
-	const tabs = ["home", "stats", "friends", "settings"];
+	const tabs = ["home", "statistics", "friends", "settings"];
 
 	const currentIndex = tabs.indexOf(active);
 	const prevElem = currentIndex == 0 ? null : tabs[currentIndex - 1];
@@ -16,52 +16,50 @@ export default function Navigation({ active }) {
                             flex flex-row
                             text-2xl text-center"
 		>
-			<Link
-				href="/" passHref={true}
-				className={`w-1/4 py-6 ${
-					active == "home" ? "bg-white" : "bg-slate-300"
-				} ${prevElem == "home" ? "rounded-tr-3xl" : ""}`}
-			>
-				<div>
+			<Link href="/" passHref={true}>
+				<div
+					className={`w-1/4 py-6 ${
+						active == "home" ? "bg-white" : "bg-slate-300"
+					} ${prevElem == "home" ? "rounded-tr-3xl" : ""}`}
+				>
 					<i className="bi bi-house"></i>
 				</div>
 			</Link>
 
-			<Link
-				href="/dashboard" passHref={true}
-				className={`w-1/4 py-6 ${
-					active == "dashboard" ? "bg-white" : "bg-slate-300"
-				} ${prevElem == "dashboard" ? "rounded-tr-3xl" : ""} ${
-					afterElem == "dashboard" ? "rounded-tl-3xl" : ""
-				}`}
-			>
-				<div>
+			<Link href="/statistics" passHref={true}>
+				<div
+					className={`w-1/4 py-6 ${
+						active == "statistics" ? "bg-white" : "bg-slate-300"
+					} ${prevElem == "statistics" ? "rounded-tr-3xl" : ""} ${
+						afterElem == "statistics" ? "rounded-tl-3xl" : ""
+					}`}
+				>
 					<i className="bi bi-graph-up"></i>
 				</div>
 			</Link>
 
-			<Link
-				href="/friends" passHref={true}
-				className={`w-1/4 py-6 ${
-					active == "friends" ? "bg-white" : "bg-slate-300"
-				} ${prevElem == "friends" ? "rounded-tr-3xl" : ""} ${
-					afterElem == "friends" ? "rounded-tl-3xl" : ""
-				}`}
-			>
-				<div>
+			<Link href="/friends" passHref={true}>
+				<div
+					className={`w-1/4 py-6 ${
+						active == "friends" ? "bg-white" : "bg-slate-300"
+					} ${prevElem == "friends" ? "rounded-tr-3xl" : ""} ${
+						afterElem == "friends" ? "rounded-tl-3xl" : ""
+					}`}
+				>
 					<i className="bi bi-people"></i>
 				</div>
 			</Link>
 
-			<Link
-				href="/settings" passHref={true}
-				className={`w-1/4 py-6 ${
-					active == "settings" ? "bg-white" : "bg-slate-300"
-				} ${prevElem == "settings" ? "rounded-tr-3xl" : ""} ${
-					afterElem == "settings" ? "rounded-tl-3xl" : ""
-				}`}
-			>
+			<Link href="/settings" passHref={true}>
+				<div
+					className={`w-1/4 py-6 ${
+						active == "settings" ? "bg-white" : "bg-slate-300"
+					} ${prevElem == "settings" ? "rounded-tr-3xl" : ""} ${
+						afterElem == "settings" ? "rounded-tl-3xl" : ""
+					}`}
+				>
 					<i className="bi bi-gear"></i>
+				</div>
 			</Link>
 		</nav>
 	);

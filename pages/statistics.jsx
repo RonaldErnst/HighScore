@@ -5,7 +5,7 @@ function Statistics() {
 
     return (
 
-        <Navigation active="stats"></Navigation>
+        <Navigation active="statistics"></Navigation>
     );
 }
 

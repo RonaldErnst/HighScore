@@ -7,4 +7,3 @@ const app = initializeApp(clientCredentials);
 
 export const fireauth = getAuth(app);
 export const firestore = getFirestore(app);
-
