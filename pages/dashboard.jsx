@@ -1,8 +1,11 @@
 import Navigation from "../components/navigation";
+import Header from "../components/header";
 
 export default function Dashboard() {
     return (
-
-        <Navigation active="dashboard"></Navigation>
+        <>
+            <Header/>
+            <Navigation active="dashboard"></Navigation>
+        </>
     );
 }
