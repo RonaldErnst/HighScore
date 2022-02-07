@@ -1,7 +1,7 @@
 import Link from "next/link";
-import React from 'react';
+import { withPublic } from "../components/Routing";
 
-export default function Login() {
+function Login() {
 	return (
 		<div
 			className="
@@ -76,14 +76,12 @@ export default function Login() {
 					</button>
 
 					<div className="flex items-center flex-row space-x-6">
-						<Link
-							href="/register"
+						<Link href="/register"
 							className="text-gray-800 hover:underline"
 						>
 							Register
 						</Link>
-						<Link
-							href="/reset-password"
+						<Link href="/reset-password"
 							className="text-gray-800 hover:underline"
 						>
 							Forgot password
@@ -94,3 +92,5 @@ export default function Login() {
 		</div>
 	);
 }
+
+export default withPublic(Login);

@@ -1,6 +1,7 @@
 import Link from 'next/link';
+import { withPublic } from '../components/Routing';
 
-export default function ResetPassword() {
+function ResetPassword() {
 	return (
 		<div
 			className="
@@ -76,3 +77,5 @@ export default function ResetPassword() {
 		</div>
 	);
 }
+
+export default withPublic(ResetPassword);

@@ -1,7 +1,9 @@
 import Navigation from "../components/navigation";
+import { withPrivate } from "../components/Routing";
 
-export default function Dashboard() {
-	return (
-		<Navigation active="home"></Navigation>
-	);
+function Home() {
+
+	return <Navigation active="home"></Navigation>;
 }
+
+export default withPrivate(Home);

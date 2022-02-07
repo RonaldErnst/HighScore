@@ -1,11 +1,12 @@
 import Navigation from "../components/navigation";
 import { withPrivate } from "../components/Routing";
 
-function Settings() {
+function Statistics() {
+
     return (
 
-        <Navigation active="settings"></Navigation>
+        <Navigation active="stats"></Navigation>
     );
 }
 
-export default withPrivate(Settings);
+export default withPrivate(Statistics);

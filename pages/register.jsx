@@ -1,6 +1,7 @@
 import Link from 'next/link';
+import { withPublic } from '../components/Routing';
 
-export default function Register() {
+function Register() {
 	return (
 		<div
 			className="
@@ -141,3 +142,5 @@ export default function Register() {
 		</div>
 	);
 }
+
+export default withPublic(Register);

@@ -5,7 +5,6 @@ import { getFirestore } from "firebase/firestore";
 
 const app = initializeApp(clientCredentials);
 
-const fireauth = getAuth(app);
-const firestore = getFirestore(app);
+export const fireauth = getAuth(app);
+export const firestore = getFirestore(app);
 
-// TODO login, createUser, changePW
