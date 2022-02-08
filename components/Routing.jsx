@@ -8,7 +8,7 @@ export function withPublic(Component) {
 
     if(!loading && currentUser) {
       router.replace("/");
-      return <h1>Loading ...</h1>;
+      return null;
     }
 
     return <Component { ...props }/>
@@ -22,7 +22,7 @@ export function withPrivate(Component) {
 
     if(!currentUser) {
       router.replace("/login");
-      return <h1>Loading ...</h1>; // TODO loading Component
+      return null;
     }
 
     return <Component { ...props }/>

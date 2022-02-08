@@ -2,12 +2,14 @@ import Header from "../components/header";
 import Navigation from "../components/navigation";
 import { withPrivate } from '../components/Routing';
 
+export const route = "/friends";
+
 function Friends() {
 
 	return (
 		<>
 			<Header/>
-			<Navigation active="friends"></Navigation>;
+			<Navigation active={route}></Navigation>;
 		</>
 
 	)

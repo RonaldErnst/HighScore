@@ -4,6 +4,8 @@ import React from "react";
 import { withPrivate } from "../components/Routing";
 import Chart from "chart.js/auto";
 
+export const route = "/statistics";
+
 function Statistics() {
 
     React.useEffect(() => {
@@ -93,7 +95,7 @@ function Statistics() {
 
             </div>
 
-            <Navigation active="statistics"></Navigation>
+            <Navigation active={route}></Navigation>
         </>
     );
 }
