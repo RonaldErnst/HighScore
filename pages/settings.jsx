@@ -5,6 +5,8 @@ import { useAuth } from "../contexts/AuthContext";
 import { useRef, useState } from "react";
 import { useRouter } from "next/router";
 
+export const route = "/settings";
+
 function Settings() {
 	const emailRef = useRef();
 	const passwordRef = useRef();
@@ -162,7 +164,7 @@ function Settings() {
 				</form>
 			</div>
 
-			<Navigation active="settings"></Navigation>
+			<Navigation active={route}></Navigation>
 		</>
 	);
 }
