@@ -1,13 +1,14 @@
 import Navigation from "../components/navigation";
-import Header from "../components/header";
+import { withPrivate } from "../components/Routing";
+import { fireauth } from "../firebase";
 
-export default function Dashboard() {
+function Home() {
 	return (
 		<>
-			<Header></Header>
-			<h1>Index</h1>
+			Hallo {fireauth.currentUser.displayName}!
 			<Navigation active="home"></Navigation>
 		</>
-
 	);
 }
+
+export default withPrivate(Home);

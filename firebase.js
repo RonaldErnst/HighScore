@@ -1,7 +1,9 @@
-import firebase from "firebase";
-import { firebase_config } from './config';
+import { clientCredentials } from './config';
+import { initializeApp } from 'firebase/app';
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
-firebase.initializeApp(firebase_config);
+const app = initializeApp(clientCredentials);
 
-export const firestore = admin.firestore()
-export const fireauth = admin.auth();
+export const fireauth = getAuth(app);
+export const firestore = getFirestore(app);

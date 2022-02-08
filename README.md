@@ -2,9 +2,9 @@
 Eine Web App, mit der man ein Rating von 0-10 festhalten kann.
 
 # Ideen
-tags bei einträgen
-highscore titel oben rotiert bei tippen zu Höchstem Mal "Dein Highsore: 7.5"
-Bei Stärke nach 5 mal auf + drücken kann man die Stärke höher als 10 inkrementieren
+- tags bei einträgen  
+- highscore titel oben rotiert bei tippen zu Höchstem Mal "Dein Highsore: 7.5"  
+- Bei Stärke nach 5 mal auf + drücken kann man die Stärke höher als 10 inkrementieren  
 
 # Konzept
 - Benutzer mit Accounts
@@ -12,7 +12,7 @@ Bei Stärke nach 5 mal auf + drücken kann man die Stärke höher als 10 inkreme
 - Unterschiedliche Zusammenfassungen & Statistiken ([ChartJS](https://www.chartjs.org/))
 
 # Server starten
-`npm start` ausführen oder VSCode so einstellen, dass NodeJS auf server.js zeigt
+`npm run dev` ausführen oder VSCode so einstellen, dass NodeJS auf server.js zeigt
 
 # TODOs
 1. Eigene lokale Branches: dev-ronald, dev-luca, dev-luis

@@ -1,4 +1,7 @@
-export default function ResetPassword() {
+import Link from 'next/link';
+import { withPublic } from '../components/Routing';
+
+function ResetPassword() {
 	return (
 		<div
 			className="
@@ -56,21 +59,23 @@ export default function ResetPassword() {
 					</button>
 
 					<div className="flex items-center flex-row space-x-6">
-						<a
+						<Link
 							href="/login"
 							className="text-gray-800 hover:underline"
 						>
 							Login
-						</a>
-						<a
+						</Link>
+						<Link
 							href="/register"
 							className="text-gray-800 hover:underline"
 						>
 							Register
-						</a>
+						</Link>
 					</div>
 				</form>
 			</div>
 		</div>
 	);
 }
+
+export default withPublic(ResetPassword);

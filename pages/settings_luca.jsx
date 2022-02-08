@@ -1,7 +1,8 @@
 import Navigation from "../components/navigation";
 import Header from "../components/header";
+import { withPrivate } from "../components/Routing";
 
-export default function Settings() {
+function Settings() {
     return (
         <>
             <Header/>
@@ -72,3 +73,5 @@ export default function Settings() {
         </>
     );
 }
+
+export default withPrivate(Settings);
