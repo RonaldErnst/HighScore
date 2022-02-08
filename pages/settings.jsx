@@ -1,6 +1,7 @@
 import Navigation from "../components/navigation";
 import Header from "../components/header";
 import { withPrivate } from "../components/Routing";
+import { fireauth } from "../firebase";
 
 function Settings() {
     return (
@@ -70,6 +71,7 @@ function Settings() {
             </div>
 
             <Navigation active="settings"></Navigation>
+
         </>
     );
 }
