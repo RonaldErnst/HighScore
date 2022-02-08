@@ -1,10 +1,7 @@
-import Navigation from "../components/navigation";
-import Header from "../components/header";
 import React from "react";
 import Chart from "chart.js/auto";
 
-export default function Dashboard() {
-
+export default function CardLineChart() {
     React.useEffect(() => {
         var config = {
             type: "line",
@@ -80,19 +77,13 @@ export default function Dashboard() {
         var ctx = document.getElementById("line-chart").getContext("2d");
         window.myLine = new Chart(ctx, config);
     }, []);
-
     return (
         <>
-            <Header/>
-            <div className="mt-16 p-3 w-full md:w-1/2 lg:w-1/3 mx-auto">
+                    <div className="relative h-350-px">
+                        <canvas id="line-chart"></canvas>
+                    </div>
 
-                <div className="">
-                    <canvas id="line-chart"></canvas>
-                </div>
-
-            </div>
-
-            <Navigation active="dashboard"></Navigation>
         </>
     );
 }
+
