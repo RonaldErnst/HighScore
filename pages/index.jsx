@@ -1,15 +1,17 @@
 import Navigation from "../components/navigation";
 import Header from "../components/header";
 import { withPrivate } from "../components/Routing";
-import { fireauth } from "../firebase";
+import { useAuth } from "../contexts/AuthContext";
 
 function Home() {
+	const { currentUser } = useAuth();
+
 	return (
 		<>
 			<Header/>
 			<div className="mt-16 p-3 w-full md:w-1/2 lg:w-1/3 mx-auto flex flex-col space-y-4">
 
-				<p>Hallo {fireauth.currentUser.displayName}!</p>
+				<p>Hallo {currentUser.displayName}!</p>
 
 				<a>
 					<div className="shadow-md rounded-3xl p-5 border-slate-200 border">
@@ -33,7 +35,6 @@ function Home() {
 
 
 			</div>
-
 			<Navigation active="home"></Navigation>
 		</>
 	);
