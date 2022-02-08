@@ -1,9 +1,16 @@
+import Header from "../components/header";
 import Navigation from "../components/navigation";
 import { withPrivate } from '../components/Routing';
 
 function Friends() {
 
-	return <Navigation active="friends"></Navigation>;
+	return (
+		<>
+			<Header/>
+			<Navigation active="friends"></Navigation>;
+		</>
+
+	)
 }
 
 export default withPrivate(Friends);

@@ -1,10 +1,9 @@
-import Header from "../components/header";
 import Navigation from "../components/navigation";
+import Header from "../components/header";
 import React from "react";
-import { withPrivate } from "../components/Routing";
 import Chart from "chart.js/auto";
 
-function Statistics() {
+export default function Dashboard() {
 
     React.useEffect(() => {
         var config = {
@@ -92,9 +91,8 @@ function Statistics() {
                 </div>
 
             </div>
-            <Navigation active="statistics"></Navigation>
+
+            <Navigation active="dashboard"></Navigation>
         </>
     );
 }
-
-export default withPrivate(Statistics);

@@ -1,11 +1,7 @@
-import Header from "../components/header";
-import Navigation from "../components/navigation";
 import React from "react";
-import { withPrivate } from "../components/Routing";
 import Chart from "chart.js/auto";
 
-function Statistics() {
-
+export default function CardLineChart() {
     React.useEffect(() => {
         var config = {
             type: "line",
@@ -81,20 +77,13 @@ function Statistics() {
         var ctx = document.getElementById("line-chart").getContext("2d");
         window.myLine = new Chart(ctx, config);
     }, []);
-
     return (
         <>
-            <Header/>
-            <div className="mt-16 p-3 w-full md:w-1/2 lg:w-1/3 mx-auto">
+                    <div className="relative h-350-px">
+                        <canvas id="line-chart"></canvas>
+                    </div>
 
-                <div className="">
-                    <canvas id="line-chart"></canvas>
-                </div>
-
-            </div>
-            <Navigation active="statistics"></Navigation>
         </>
     );
 }
 
-export default withPrivate(Statistics);
