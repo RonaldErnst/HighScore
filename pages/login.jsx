@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState, useRef } from "react";
 import { withPublic } from "../components/Routing";
+import { useAuth } from '../contexts/AuthContext';
 
 function Login() {
 	const emailRef = useRef()
@@ -9,7 +10,7 @@ function Login() {
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const router = useRouter();
-	//const { login } = useAuth(); TODO
+	const { loginUser } = useAuth();
 
 
 	async function handleSubmit(e) {
@@ -18,8 +19,7 @@ function Login() {
     try {
       setError("");
       setLoading(true);
-			// TODO login
-
+			await loginUser(emailRef.current.value, passwordRef.current.value);
       router.push("/");
     } catch {
       setError("Failed to log in")

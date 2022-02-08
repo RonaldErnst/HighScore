@@ -1,7 +1,31 @@
 import Link from 'next/link';
+import { useRef } from 'react';
 import { withPublic } from '../components/Routing';
+import { useAuth } from '../contexts/AuthContext';
 
 function ResetPassword() {
+	const emailRef = useRef();
+	const { resetUserPassword } = useAuth();
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
+  const [message, setMessage] = useState("")
+
+	async function handleSubmit(e) {
+		e.preventDefault()
+
+    try {
+      setMessage("")
+      setError("")
+      setLoading(true)
+      await resetUserPassword(emailRef.current.value)
+      setMessage("Check your inbox for further instructions")
+    } catch {
+      setError("Failed to reset password")
+    }
+
+    setLoading(false)
+	}
+
 	return (
 		<div
 			className="
@@ -23,7 +47,7 @@ function ResetPassword() {
 				</div>
 
 				<form
-					action="/reset"
+					onSubmit={handleSubmit}
 					className="grid items-center justify-items-center space-y-5"
 				>
 					<div
@@ -43,7 +67,7 @@ function ResetPassword() {
 							<i className="bi bi-envelope"></i>{" "}
 						</label>
 						<input
-							id="email"
+							ref={emailRef}
 							name="email"
 							type="email"
 							placeholder="E-Mail"
@@ -52,6 +76,7 @@ function ResetPassword() {
 					</div>
 
 					<button
+						disabled={loading}
 						type="submit"
 						className="w-1/2 bg-emerald-400 rounded-3xl shadow-2xl text-lg text-center font-semibold p-1"
 					>

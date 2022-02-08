@@ -17,12 +17,12 @@ export function withPublic(Component) {
 
 export function withPrivate(Component) {
   return function WithPublic(props) {
-    const { currentUser, loading }  = useAuth();
+    const { currentUser }  = useAuth();
     const router = useRouter();
 
     if(!currentUser) {
       router.replace("/login");
-      return <h1>Loading ...</h1>;
+      return <h1>Loading ...</h1>; // TODO loading Component
     }
 
     return <Component { ...props }/>

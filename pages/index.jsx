@@ -1,13 +1,15 @@
 import Navigation from "../components/navigation";
 import Header from "../components/header";
 import { withPrivate } from "../components/Routing";
-import { fireauth } from "../firebase";
+import { useAuth } from "../contexts/AuthContext";
 
 function Home() {
+	const { currentUser } = useAuth();
+
 	return (
 		<>
 			<Header/>
-			Hallo {fireauth.currentUser.displayName}!
+			Hallo {currentUser.displayName}!
 			<Navigation active="home"></Navigation>
 		</>
 	);
