@@ -19,7 +19,7 @@ export default function Navigation({ active }) {
 			<Link href="/" passHref={true}>
 				<div
 					className={`w-1/4 py-6 ${
-						active == "home" ? "bg-white" : "bg-slate-300"
+						active == "home" ? "bg-white" : "bg-slate-300 navInnerShadow"
 					} ${prevElem == "home" ? "rounded-tr-3xl" : ""}`}
 				>
 					<i className="bi bi-house"></i>
@@ -29,7 +29,7 @@ export default function Navigation({ active }) {
 			<Link href="/statistics" passHref={true}>
 				<div
 					className={`w-1/4 py-6 ${
-						active == "statistics" ? "bg-white" : "bg-slate-300"
+						active == "statistics" ? "bg-white" : "bg-slate-300 navInnerShadow"
 					} ${prevElem == "statistics" ? "rounded-tr-3xl" : ""} ${
 						afterElem == "statistics" ? "rounded-tl-3xl" : ""
 					}`}
@@ -41,7 +41,7 @@ export default function Navigation({ active }) {
 			<Link href="/friends" passHref={true}>
 				<div
 					className={`w-1/4 py-6 ${
-						active == "friends" ? "bg-white" : "bg-slate-300"
+						active == "friends" ? "bg-white" : "bg-slate-300 navInnerShadow"
 					} ${prevElem == "friends" ? "rounded-tr-3xl" : ""} ${
 						afterElem == "friends" ? "rounded-tl-3xl" : ""
 					}`}
@@ -53,7 +53,7 @@ export default function Navigation({ active }) {
 			<Link href="/settings" passHref={true}>
 				<div
 					className={`w-1/4 py-6 ${
-						active == "settings" ? "bg-white" : "bg-slate-300"
+						active == "settings" ? "bg-white" : "bg-slate-300 navInnerShadow"
 					} ${prevElem == "settings" ? "rounded-tr-3xl" : ""} ${
 						afterElem == "settings" ? "rounded-tl-3xl" : ""
 					}`}

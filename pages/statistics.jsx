@@ -92,6 +92,7 @@ function Statistics() {
                 </div>
 
             </div>
+
             <Navigation active="statistics"></Navigation>
         </>
     );
