@@ -15,7 +15,7 @@ function ResetPassword() {
 	async function handleSubmit(e) {
 		e.preventDefault();
 
-		if(!emailRef.current.value) {
+		if (!emailRef.current.value) {
 			setError("Bitte E-Mail angeben!");
 			return;
 		}
@@ -25,16 +25,18 @@ function ResetPassword() {
 			setError("");
 			setLoading(true);
 			await resetUserPassword(emailRef.current.value);
-			setMessage("Bitte schau in deine E-Mails für weitere Instruktionen");
-		} catch(e) {
-			switch(e.code) {
-				case 'auth/missing-email':
-					setError("Bitte E-Mail angeben!")
+			setMessage(
+				"Bitte schau in deine E-Mails für weitere Instruktionen"
+			);
+		} catch (e) {
+			switch (e.code) {
+				case "auth/missing-email":
+					setError("Bitte E-Mail angeben!");
 					break;
-				case 'auth/invalid-email':
+				case "auth/invalid-email":
 					setError("Ungültige E-Mail");
 					break;
-				case 'auth/user-not-found':
+				case "auth/user-not-found":
 					setError("Keinen Benutzer mit dieser E-Mail gefunden");
 					break;
 				default:
@@ -116,23 +118,21 @@ function ResetPassword() {
 					<button
 						disabled={loading}
 						type="submit"
-						className="w-1/2 bg-emerald-400 rounded-3xl shadow-2xl text-lg text-center font-semibold p-1"
+						className="w-1/2 bg-emerald-400 hover:bg-emerald-300 hover:text-gray-800 rounded-3xl shadow-2xl text-lg text-center font-semibold p-1"
 					>
 						Link senden
 					</button>
 
 					<div className="flex items-center flex-row space-x-6">
-						<Link
-							href={routes.login}
-							className="text-gray-800 hover:underline"
-						>
-							Login
+						<Link href={routes.login} passHref={true}>
+							<div className="text-gray-800 hover:underline">
+								Login
+							</div>
 						</Link>
-						<Link
-							href={routes.register}
-							className="text-gray-800 hover:underline"
-						>
-							Registrieren
+						<Link href={routes.register} passHref={true}>
+							<div className="text-gray-800 hover:underline">
+								Registrieren
+							</div>
 						</Link>
 					</div>
 				</form>

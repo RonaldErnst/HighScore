@@ -175,14 +175,14 @@ function Settings() {
 					<button
 						disabled={loading}
 						type="submit"
-						className="w-1/2 bg-emerald-400 rounded-3xl shadow-2xl text-lg text-center font-semibold p-1"
+						className="w-1/2 bg-emerald-400 hover:bg-emerald-300 hover:text-gray-800 rounded-3xl shadow-2xl text-lg text-center font-semibold p-1"
 					>
 						Änderungen Speichern
 					</button>
 
 					<button
 						onClick={handleLogout}
-						className="w-1/2 bg-red-500 rounded-3xl shadow-2xl text-lg text-center font-semibold p-1 mt-24"
+						className="w-1/2 bg-red-500 hover:bg-red-400 hover:text-gray-800 rounded-3xl shadow-2xl text-lg text-center font-semibold p-1 mt-24"
 					>
 						Logout
 					</button>
