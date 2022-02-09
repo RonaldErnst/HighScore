@@ -27,7 +27,7 @@ function Register() {
 			await registerUser(usernameRef.current.value, emailRef.current.value, passwordRef.current.value);
 			router.push(routes.home);
 		} catch(e) {
-			setError("Failed to create an account");
+			setError("Account konnte nicht erstellt werden");
 		}
 
 		setLoading(false);
@@ -46,12 +46,15 @@ function Register() {
 					HighScore
 				</h1>
 
-				{error && <div>{error}</div>}
 
 				<form
 					onSubmit={handleSubmit}
 					className="grid items-center justify-items-center space-y-5"
 				>
+					<div className="py-2 px-3 rounded-3xl text-xl">
+						{error && <p><i className="bi bi-exclamation-triangle text-red-500 p-1"></i> {error}</p>}
+					</div>
+
 					<div
 						className="
 													w-full bg-white

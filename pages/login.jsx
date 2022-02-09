@@ -22,13 +22,14 @@ function Login() {
 			await loginUser(emailRef.current.value, passwordRef.current.value);
       router.push(routes.home);
     } catch {
-      setError("Failed to log in")
+      setError("Login ist fehlgeschlagen")
     }
 
     setLoading(false)
   }
 
 	return (
+		<>
 		<div
 			className="
 					w-full h-screen
@@ -44,6 +45,9 @@ function Login() {
 				<form onSubmit={handleSubmit}
 					className="grid items-center justify-items-center space-y-5"
 				>
+					<div className="py-2 px-3 rounded-3xl text-xl">
+						{error && <p><i className="bi bi-exclamation-triangle text-red-500 p-1"></i> {error}</p>}
+					</div>
 					<div
 						className="
 											w-full bg-white
@@ -117,6 +121,7 @@ function Login() {
 				</form>
 			</div>
 		</div>
+		</>
 	);
 }
 
