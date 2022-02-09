@@ -31,14 +31,14 @@ function Register() {
 			);
 			router.push(routes.login);
 		} catch (e) {
-			switch(e.code) {
-				case 'auth/email-already-in-use':
+			switch (e.code) {
+				case "auth/email-already-in-use":
 					setError("E-Mail wird schon verwendet");
 					break;
-				case 'auth/invalid-email':
+				case "auth/invalid-email":
 					setError("Bitte E-Mail überprüfen!");
 					break;
-				default: 
+				default:
 					console.log(e.code);
 					setError("Account konnte nicht erstellt werden");
 			}
@@ -176,23 +176,21 @@ function Register() {
 					<button
 						disabled={loading}
 						type="submit"
-						className="w-1/2 bg-emerald-400 rounded-3xl shadow-2xl text-lg text-center font-semibold p-1"
+						className="w-1/2 bg-emerald-400 hover:bg-emerald-300 hover:text-gray-800 rounded-3xl shadow-2xl text-lg text-center font-semibold p-1"
 					>
 						Register
 					</button>
 
 					<div className="flex items-center flex-row space-x-6">
-						<Link
-							href={routes.login}
-							className="text-gray-800 hover:underline"
-						>
-							Login
+						<Link href={routes.login} passHref={true}>
+							<div className="text-gray-800 hover:underline">
+								Login
+							</div>
 						</Link>
-						<Link
-							href={routes.resetPassword}
-							className="text-gray-800 hover:underline"
-						>
-							Forgot password
+						<Link href={routes.resetPassword} passHref={true}>
+							<div className="text-gray-800 hover:underline">
+								Forgot password
+							</div>
 						</Link>
 					</div>
 				</form>
