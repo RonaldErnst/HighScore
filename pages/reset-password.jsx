@@ -1,31 +1,49 @@
-import Link from 'next/link';
-import { useRef } from 'react';
-import { routes, withPublic } from '../components/Routing';
-import { useAuth } from '../contexts/AuthContext';
+import Link from "next/link";
+import { useRef, useState } from "react";
+import { routes, withPublic } from "../components/Routing";
+import { useAuth } from "../contexts/AuthContext";
 
 export const route = "/reset-password";
 
 function ResetPassword() {
 	const emailRef = useRef();
 	const { resetUserPassword } = useAuth();
-  const [error, setError] = useState("")
-  const [loading, setLoading] = useState(false)
-  const [message, setMessage] = useState("")
+	const [error, setError] = useState("");
+	const [loading, setLoading] = useState(false);
+	const [message, setMessage] = useState("");
 
 	async function handleSubmit(e) {
-		e.preventDefault()
+		e.preventDefault();
 
-    try {
-      setMessage("")
-      setError("")
-      setLoading(true)
-      await resetUserPassword(emailRef.current.value)
-      setMessage("Check your inbox for further instructions")
-    } catch {
-      setError("Passwort konnte nicht zurückgesetzt werden")
-    }
+		if(!emailRef.current.value) {
+			setError("Bitte E-Mail angeben!");
+			return;
+		}
 
-    setLoading(false)
+		try {
+			setMessage("");
+			setError("");
+			setLoading(true);
+			await resetUserPassword(emailRef.current.value);
+			setMessage("Bitte schau in deine E-Mails für weitere Instruktionen");
+		} catch(e) {
+			switch(e.code) {
+				case 'auth/missing-email':
+					setError("Bitte E-Mail angeben!")
+					break;
+				case 'auth/invalid-email':
+					setError("Ungültige E-Mail");
+					break;
+				case 'auth/user-not-found':
+					setError("Keinen Benutzer mit dieser E-Mail gefunden");
+					break;
+				default:
+					console.log(e.code);
+					setError("Passwort konnte nicht zurückgesetzt werden");
+			}
+		}
+
+		setLoading(false);
 	}
 
 	return (
@@ -52,9 +70,24 @@ function ResetPassword() {
 					onSubmit={handleSubmit}
 					className="grid items-center justify-items-center space-y-5"
 				>
-					<div className="py-2 px-3 rounded-3xl text-xl">
-						{error && <p><i className="bi bi-exclamation-triangle text-red-500 p-1"></i> {error}</p>}
-					</div>
+					{error && (
+						<div className="py-2 px-3 rounded-3xl text-xl">
+							<p>
+								<i className="bi bi-exclamation-triangle text-red-500 p-1"></i>{" "}
+								{error}
+							</p>
+						</div>
+					)}
+
+					{message && (
+						<div className="py-2 px-3 rounded-3xl text-xl">
+							<p>
+								<i className="bi bi-exclamation-triangle text-green-500 p-1"></i>{" "}
+								{message}
+							</p>
+						</div>
+					)}
+
 					<div
 						className="
 										bg-white
@@ -85,7 +118,7 @@ function ResetPassword() {
 						type="submit"
 						className="w-1/2 bg-emerald-400 rounded-3xl shadow-2xl text-lg text-center font-semibold p-1"
 					>
-						Send link
+						Link senden
 					</button>
 
 					<div className="flex items-center flex-row space-x-6">
@@ -99,7 +132,7 @@ function ResetPassword() {
 							href={routes.register}
 							className="text-gray-800 hover:underline"
 						>
-							Register
+							Registrieren
 						</Link>
 					</div>
 				</form>

@@ -18,16 +18,30 @@ function Register() {
 		e.preventDefault();
 
 		if (passwordRef.current.value !== passwordConfRef.current.value) {
-			return setError("Passwords do not match");
+			return setError("Passwörter stimmen nicht überein");
 		}
 
 		try {
 			setError("");
 			setLoading(true);
-			await registerUser(usernameRef.current.value, emailRef.current.value, passwordRef.current.value);
-			router.push(routes.home);
-		} catch(e) {
-			setError("Account konnte nicht erstellt werden");
+			await registerUser(
+				usernameRef.current.value,
+				emailRef.current.value,
+				passwordRef.current.value
+			);
+			router.push(routes.login);
+		} catch (e) {
+			switch(e.code) {
+				case 'auth/email-already-in-use':
+					setError("E-Mail wird schon verwendet");
+					break;
+				case 'auth/invalid-email':
+					setError("Bitte E-Mail überprüfen!");
+					break;
+				default: 
+					console.log(e.code);
+					setError("Account konnte nicht erstellt werden");
+			}
 		}
 
 		setLoading(false);
@@ -46,14 +60,18 @@ function Register() {
 					HighScore
 				</h1>
 
-
 				<form
 					onSubmit={handleSubmit}
 					className="grid items-center justify-items-center space-y-5"
 				>
-					<div className="py-2 px-3 rounded-3xl text-xl">
-						{error && <p><i className="bi bi-exclamation-triangle text-red-500 p-1"></i> {error}</p>}
-					</div>
+					{error && (
+						<div className="py-2 px-3 rounded-3xl text-xl">
+							<p>
+								<i className="bi bi-exclamation-triangle text-red-500 p-1"></i>{" "}
+								{error}
+							</p>
+						</div>
+					)}
 
 					<div
 						className="
