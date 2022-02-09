@@ -6,11 +6,11 @@ import { useAuth } from "../contexts/AuthContext";
 export const route = "/";
 
 function Home() {
-	const { currentUser } = useAuth();
+	const {currentUser} = useAuth();
 
 	return (
 		<>
-			<Header highscore={8}/>
+			<Header/>
 			<div className="mt-16 p-3 w-full md:w-1/2 lg:w-1/3 mx-auto flex flex-col space-y-4">
 
 				<p>Hallo {currentUser.displayName}!</p>
@@ -37,9 +37,8 @@ function Home() {
 
 
 			</div>
-			<Navigation active={route}></Navigation>
+			<Navigation active="home"></Navigation>
 		</>
 	);
 }
-
 export default withPrivate(Home);

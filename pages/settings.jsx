@@ -19,7 +19,7 @@ function Settings() {
 	function handleSubmit(e) {
 		e.preventDefault();
 		if (passwordRef.current.value !== passwordConfRef.current.value) {
-			return setError("Passwords do not match");
+			return setError("Passwörter stimmen nicht überein");
 		}
 
 		const promises = [];
@@ -38,7 +38,7 @@ function Settings() {
 				router.push("/");
 			})
 			.catch(() => {
-				setError("Failed to update account");
+				setError("Fehler beim updaten des Accounts");
 			})
 			.finally(() => {
 				setLoading(false);
@@ -52,7 +52,7 @@ function Settings() {
           await logoutUser()
           //router.push("/login")
         } catch {
-          setError("Failed to log out")
+          setError("Fehler beim ausloggen")
         }
     }
 
@@ -67,6 +67,9 @@ function Settings() {
 					onSubmit={handleSubmit}
 					className="p-6 space-y-6 grid items-center justify-items-center"
 				>
+					<div className="py-2 px-3 rounded-3xl text-xl">
+						{error && <p><i className="bi bi-exclamation-triangle text-red-500 p-1"></i> {error}</p>}
+					</div>
 					<div className="space-y-2">
 						<h2 className="text-md text-slate-700">
 							E-Mail ändern
