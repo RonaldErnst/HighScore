@@ -11,67 +11,53 @@ export default function Navigation({ active }) {
 
 	return (
 		<>
-		<div className="w-full
-                        fixed inset-x-0 bottom-0
-                        flex flex-col">
-			<a href="/entries/add" className="text-6xl text-center
-							   bg-emerald-400 shadow-xl
-							   rounded-full p-1
-							   mx-auto mb-6">
-				<i className="bi bi-plus"></i>
-			</a>
-		<nav
-			 className="flex flex-row
-                        text-2xl text-center">
+			<nav className="flex flex-row
+							text-2xl text-center w-full
+							fixed inset-x-0 bottom-0">
 
-			<Link href={routes.home} passHref={true}>
-				<div
-					className={`w-1/4 py-6 ${
-						active == routes.home ? "bg-white" : "bg-slate-300 hover:bg-slate-400 navInnerShadow"
-					} ${prevElem == routes.home ? "rounded-tr-3xl" : ""}`}
-				>
-					<i className="bi bi-house"></i>
-				</div>
-			</Link>
+				<Link href={routes.home} passHref={true}>
+					<div
+						className={`w-1/4 py-6 ${
+							active == routes.home ? "bg-white" : "bg-slate-300 hover:bg-slate-400 navInnerShadow"
+						} ${prevElem == routes.home ? "rounded-tr-3xl" : ""}`}>
+						<i className="bi bi-house"></i>
+					</div>
+				</Link>
 
-			<Link href={routes.statistics} passHref={true}>
-				<div
-					className={`w-1/4 py-6 ${
-						active == routes.statistics ? "bg-white" : "bg-slate-300 hover:bg-slate-400 navInnerShadow"
-					} ${prevElem == routes.statistics ? "rounded-tr-3xl" : ""} ${
-						afterElem == routes.statistics ? "rounded-tl-3xl" : ""
-					}`}
-				>
-					<i className="bi bi-graph-up"></i>
-				</div>
-			</Link>
+				<Link href={routes.statistics} passHref={true}>
+					<div
+						className={`w-1/4 py-6 ${
+							active == routes.statistics ? "bg-white" : "bg-slate-300 hover:bg-slate-400 navInnerShadow"
+						} ${prevElem == routes.statistics ? "rounded-tr-3xl" : ""} ${
+							afterElem == routes.statistics ? "rounded-tl-3xl" : ""
+						}`}
+					>
+						<i className="bi bi-graph-up"></i>
+					</div>
+				</Link>
 
-			<Link href={routes.friends} passHref={true}>
-				<div
-					className={`w-1/4 py-6 ${
-						active == routes.friends ? "bg-white" : "bg-slate-300 hover:bg-slate-400 navInnerShadow"
-					} ${prevElem == routes.friends ? "rounded-tr-3xl" : ""} ${
-						afterElem == routes.friends ? "rounded-tl-3xl" : ""
-					}`}
-				>
-					<i className="bi bi-people"></i>
-				</div>
-			</Link>
+				<Link href={routes.friends} passHref={true}>
+					<div
+						className={`w-1/4 py-6 ${
+							active == routes.friends ? "bg-white" : "bg-slate-300 hover:bg-slate-400 navInnerShadow"
+						} ${prevElem == routes.friends ? "rounded-tr-3xl" : ""} ${
+							afterElem == routes.friends ? "rounded-tl-3xl" : ""
+						}`}>
+						<i className="bi bi-people"></i>
+					</div>
+				</Link>
 
-			<Link href={routes.settings} passHref={true}>
-				<div
-					className={`w-1/4 py-6 ${
-						active == routes.settings ? "bg-white" : "bg-slate-300 hover:bg-slate-400 navInnerShadow"
-					} ${prevElem == routes.settings ? "rounded-tr-3xl" : ""} ${
-						afterElem == routes.settings ? "rounded-tl-3xl" : ""
-					}`}
-				>
-					<i className="bi bi-gear"></i>
-				</div>
-			</Link>
-		</nav>
-		</div>
-
+				<Link href={routes.settings} passHref={true}>
+					<div
+						className={`w-1/4 py-6 ${
+							active == routes.settings ? "bg-white" : "bg-slate-300 hover:bg-slate-400 navInnerShadow"
+						} ${prevElem == routes.settings ? "rounded-tr-3xl" : ""} ${
+							afterElem == routes.settings ? "rounded-tl-3xl" : ""
+						}`}>
+						<i className="bi bi-gear"></i>
+					</div>
+				</Link>
+			</nav>
 		</>
 
 	);
