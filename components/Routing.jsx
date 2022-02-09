@@ -36,5 +36,6 @@ export const routes = {
   register: "/register",
   settings: "/settings",
   statistics: "/statistics",
-  friends: "/friends"
+  friends: "/friends",
+  addEntry: "/entries/add",
 }

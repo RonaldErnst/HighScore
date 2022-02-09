@@ -3,29 +3,22 @@ import Header from "../../components/header";
 import React from 'react';
 import { useState } from 'react';
 
+const initialCount = 5;
+const updateStep = 0.5;
+
 export default function AddEntry() {
-  // TODO Design und Ablauf überlegen
-  // Schrittweise? Zuerst Kategorie abfragen: Weed, Shisha, etc
-  // Dann kategorie spezifische Oberfläche anzeigen?
-    const [count, setCount] = useState(5);
-    const [error, setError] = useState("")
+    const [count, setCount] = useState(initialCount);
 
     const handleIncScore = () => {
-        setError("");
-        if (count == 10) {
-            setError("Maximal 10/10 möglich")
-        } else {
-            const updatedCount = count + 0.5;
+        if (count < 10) {
+            const updatedCount = count + updateStep;
             setCount(updatedCount);
         }
     };
 
     const handleDecScore = () => {
-        setError("");
-        if (count == 0) {
-            setError("Keine negativen Werte möglich")
-        } else {
-            const updatedCount = count - 0.5;
+        if (count > 0) {
+            const updatedCount = count - updateStep;
             setCount(updatedCount);
         }
     };
@@ -41,24 +34,20 @@ export default function AddEntry() {
                   <h2>Score:</h2>
                   <form className="flex flex-col items-center justify-items-center space-y-4">
 
-                      <div>
-                          {error && <p><i className="bi bi-exclamation-triangle text-red-500 p-1"></i> {error}</p>}
-                      </div>
-
                       <div className="flex flex-row text-xl">
 
                           <div>
                               <span onClick={handleDecScore}>
-                                  <i className="bi bi-dash-lg text-5xl p-2"></i>
+                                  <i className="bi bi-dash-lg text-4xl p-2 hover:text-gray-600"></i>
                               </span>
                           </div>
                           <div className="text-center">
-                              <span><p className="text-4xl">{count}</p></span>
+                              <p className="text-4xl">{count}</p>
                               <p className="text-slate-600">von 10</p>
                           </div>
                           <div>
                               <span onClick={handleIncScore}>
-                                  <i className="bi bi-plus-lg text-5xl p-2"></i>
+                                  <i className="bi bi-plus-lg text-4xl p-2 hover:text-gray-600"></i>
                               </span>
                           </div>
 
