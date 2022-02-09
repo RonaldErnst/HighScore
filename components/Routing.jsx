@@ -7,7 +7,7 @@ export function withPublic(Component) {
     const router = useRouter();
 
     if(!loading && currentUser) {
-      router.replace("/");
+      router.replace(routes.home);
       return null;
     }
 
@@ -21,10 +21,20 @@ export function withPrivate(Component) {
     const router = useRouter();
 
     if(!currentUser) {
-      router.replace("/login");
+      router.replace(routes.login);
       return null;
     }
 
     return <Component { ...props }/>
   }
+}
+
+export const routes = {
+  home: "/",
+  login: "/login",
+  resetPassword: "/reset-password",
+  register: "/register",
+  settings: "/settings",
+  statistics: "/statistics",
+  friends: "/friends"
 }
