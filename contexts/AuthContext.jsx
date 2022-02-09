@@ -24,11 +24,9 @@ export function AuthProvider({ children }) {
 	function registerUser(username, email, password) {
 		return createUserWithEmailAndPassword(fireauth, email, password).then(
 			(userCredential) => {
-				updateProfile(userCredential.user, {
+				return updateProfile(userCredential.user, {
 					displayName: username,
 				});
-
-				return userCredential;
 			}
 		);
 	}

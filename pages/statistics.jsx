@@ -1,10 +1,8 @@
 import Header from "../components/header";
 import Navigation from "../components/navigation";
 import React from "react";
-import { withPrivate } from "../components/Routing";
+import { routes, withPrivate } from "../components/Routing";
 import Chart from "chart.js/auto";
-
-export const route = "/statistics";
 
 function Statistics() {
 
@@ -95,7 +93,7 @@ function Statistics() {
 
             </div>
 
-            <Navigation active={route}></Navigation>
+            <Navigation active={routes.statistics}></Navigation>
         </>
     );
 }

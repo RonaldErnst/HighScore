@@ -1,20 +1,33 @@
 import Navigation from "../components/navigation";
 import Header from "../components/header";
-import { withPrivate } from "../components/Routing";
+import { routes, withPrivate } from "../components/Routing";
 import { useAuth } from "../contexts/AuthContext";
 import { useRef, useState } from "react";
 import { useRouter } from "next/router";
-
-export const route = "/settings";
 
 function Settings() {
 	const emailRef = useRef();
 	const passwordRef = useRef();
 	const passwordConfRef = useRef();
-	const { currentUser, updateUserPassword, updateUserEmail, logoutUser } = useAuth();
+	const { currentUser, updateUserPassword, updateUserEmail, logoutUser } =
+		useAuth();
 	const [error, setError] = useState("");
 	const [loading, setLoading] = useState(false);
 	const router = useRouter();
+
+	function handleError(code) {
+		switch(code) {
+			case 'auth/invalid-email':
+				setError("Bitte E-Mail überprüfen!");
+				break;
+			case 'auth/weak-password':
+				setError("Passwort muss mindestens 6 Zeichen lang sein");
+				break;
+			default:
+				console.log(code);
+				setError("Fehler beim updaten des Accounts");
+		}
+	}
 
 	function handleSubmit(e) {
 		e.preventDefault();
@@ -26,7 +39,10 @@ function Settings() {
 		setLoading(true);
 		setError("");
 
-		if (emailRef.current.value && emailRef.current.value !== currentUser.email) {
+		if (
+			emailRef.current.value &&
+			emailRef.current.value !== currentUser.email
+		) {
 			promises.push(updateUserEmail(emailRef.current.value));
 		}
 		if (passwordRef.current.value) {
@@ -35,26 +51,26 @@ function Settings() {
 
 		Promise.all(promises)
 			.then(() => {
-				router.push("/");
+				router.push(routes.home);
 			})
-			.catch(() => {
-				setError("Fehler beim updaten des Accounts");
+			.catch((e) => {
+				handleError(e.code);
 			})
 			.finally(() => {
 				setLoading(false);
 			});
 	}
 
-    async function handleLogout() {
-        setError("")
-    
-        try {
-          await logoutUser()
-          //router.push("/login")
-        } catch {
-          setError("Fehler beim ausloggen")
-        }
-    }
+	async function handleLogout() {
+		setError("");
+
+		try {
+			await logoutUser();
+			router.push(routes.login);
+		} catch {
+			setError("Fehler beim ausloggen");
+		}
+	}
 
 	return (
 		<>
@@ -67,9 +83,14 @@ function Settings() {
 					onSubmit={handleSubmit}
 					className="p-6 space-y-6 grid items-center justify-items-center"
 				>
-					<div className="py-2 px-3 rounded-3xl text-xl">
-						{error && <p><i className="bi bi-exclamation-triangle text-red-500 p-1"></i> {error}</p>}
-					</div>
+					{error && (
+						<div className="py-2 px-3 rounded-3xl text-xl">
+							<p>
+								<i className="bi bi-exclamation-triangle text-red-500 p-1"></i>{" "}
+								{error}
+							</p>
+						</div>
+					)}
 					<div className="space-y-2">
 						<h2 className="text-md text-slate-700">
 							E-Mail ändern
@@ -152,22 +173,23 @@ function Settings() {
 					</div>
 
 					<button
+						disabled={loading}
 						type="submit"
 						className="w-1/2 bg-emerald-400 rounded-3xl shadow-2xl text-lg text-center font-semibold p-1"
 					>
 						Änderungen Speichern
 					</button>
 
-                    <button
-                        onClick={handleLogout}
-                        className="w-1/2 bg-red-500 rounded-3xl shadow-2xl text-lg text-center font-semibold p-1 mt-24"
-                    >
-                        Logout
-                    </button>
+					<button
+						onClick={handleLogout}
+						className="w-1/2 bg-red-500 rounded-3xl shadow-2xl text-lg text-center font-semibold p-1 mt-24"
+					>
+						Logout
+					</button>
 				</form>
 			</div>
 
-			<Navigation active={route}></Navigation>
+			<Navigation active={routes.settings}></Navigation>
 		</>
 	);
 }
