@@ -16,24 +16,12 @@ export default function Navigation({ active }) {
 
 	return (
 		<>
-			<div
-				className="w-full
-                        fixed inset-x-0 bottom-0
-                        flex flex-col"
-			>
-				<Link href={routes.addEntry} passHref={true}>
-					<div
-						className="text-6xl text-center
-							   bg-emerald-400 hover:bg-emerald-300 hover:text-gray-800 shadow-xl
-							   rounded-full p-1
-							   mx-auto mb-6"
-					>
-						<i className="bi bi-plus"></i>
-					</div>
-				</Link>
+
 				<nav
 					className="flex flex-row
-                        text-2xl text-center"
+                        text-2xl text-center
+                        fixed inset-x-0 bottom-0 w-full"
+
 				>
 					<Link href={routes.home} passHref={true}>
 						<div
@@ -109,7 +97,6 @@ export default function Navigation({ active }) {
 						</div>
 					</Link>
 				</nav>
-			</div>
 		</>
 	);
 }
