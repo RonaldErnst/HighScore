@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
 function Button() {
-    const {currentUser} = useAuth();
-
     return (
         <>
             <Link href={routes.addEntry} passHref={true}>
