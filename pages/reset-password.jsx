@@ -20,7 +20,7 @@ function ResetPassword() {
       await resetUserPassword(emailRef.current.value)
       setMessage("Check your inbox for further instructions")
     } catch {
-      setError("Failed to reset password")
+      setError("Passwort konnte nicht zurückgesetzt werden")
     }
 
     setLoading(false)
@@ -50,6 +50,9 @@ function ResetPassword() {
 					onSubmit={handleSubmit}
 					className="grid items-center justify-items-center space-y-5"
 				>
+					<div className="py-2 px-3 rounded-3xl text-xl">
+						{error && <p><i className="bi bi-exclamation-triangle text-red-500 p-1"></i> {error}</p>}
+					</div>
 					<div
 						className="
 										bg-white
