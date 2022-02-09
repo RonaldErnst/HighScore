@@ -45,20 +45,20 @@ export default function AddEntry() {
                           {error && <p><i className="bi bi-exclamation-triangle text-red-500 p-1"></i> {error}</p>}
                       </div>
 
-                      <div className="flex flex-row text-lg">
+                      <div className="flex flex-row text-xl">
 
                           <div>
                               <span onClick={handleDecScore}>
-                                  <i className="bi bi-dash-lg"></i>
+                                  <i className="bi bi-dash-lg text-5xl p-2"></i>
                               </span>
                           </div>
-                          <div className="text-center w-2">
-                              <span className="text-2xl">{count}</span>
+                          <div className="text-center">
+                              <span><p className="text-4xl">{count}</p></span>
                               <p className="text-slate-600">von 10</p>
                           </div>
                           <div>
                               <span onClick={handleIncScore}>
-                                  <i className="bi bi-plus-lg"></i>
+                                  <i className="bi bi-plus-lg text-5xl p-2"></i>
                               </span>
                           </div>
 

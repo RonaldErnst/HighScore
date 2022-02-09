@@ -10,12 +10,20 @@ export default function Navigation({ active }) {
 		currentIndex == tabs.length - 1 ? null : tabs[currentIndex + 1];
 
 	return (
+		<>
+		<div className="w-full
+                        fixed inset-x-0 bottom-0
+                        flex flex-col">
+			<a href="/entries/add" className="text-6xl text-center
+							   bg-emerald-400 shadow-xl
+							   rounded-full p-1
+							   mx-auto mb-6">
+				<i className="bi bi-plus"></i>
+			</a>
 		<nav
-			className="w-full
-                            fixed inset-x-0 bottom-0
-                            flex flex-row
-                            text-2xl text-center"
-		>
+			 className="flex flex-row
+                        text-2xl text-center">
+
 			<Link href={routes.home} passHref={true}>
 				<div
 					className={`w-1/4 py-6 ${
@@ -62,5 +70,9 @@ export default function Navigation({ active }) {
 				</div>
 			</Link>
 		</nav>
+		</div>
+
+		</>
+
 	);
 }
