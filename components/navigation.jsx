@@ -16,7 +16,6 @@ export default function Navigation({ active }) {
 
 	return (
 		<>
-
 				<nav
 					className="flex flex-row
                         text-2xl text-center
