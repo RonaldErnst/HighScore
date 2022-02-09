@@ -1,4 +1,5 @@
 import Navigation from "../components/navigation";
+import Button from "../components/button";
 import Header from "../components/header";
 import { routes, withPrivate } from "../components/Routing";
 import { useAuth } from "../contexts/AuthContext";
@@ -35,6 +36,7 @@ function Home() {
 
 
 			</div>
+			<Button/>
 			<Navigation active={routes.home}></Navigation>
 		</>
 	);
