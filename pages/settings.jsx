@@ -1,11 +1,9 @@
 import Navigation from "../components/navigation";
 import Header from "../components/header";
-import { withPrivate } from "../components/Routing";
+import { routes, withPrivate } from "../components/Routing";
 import { useAuth } from "../contexts/AuthContext";
 import { useRef, useState } from "react";
 import { useRouter } from "next/router";
-
-export const route = "/settings";
 
 function Settings() {
 	const emailRef = useRef();
@@ -35,7 +33,7 @@ function Settings() {
 
 		Promise.all(promises)
 			.then(() => {
-				router.push("/");
+				router.push(routes.home);
 			})
 			.catch(() => {
 				setError("Failed to update account");
@@ -50,7 +48,7 @@ function Settings() {
     
         try {
           await logoutUser()
-          //router.push("/login")
+          router.push(routes.login)
         } catch {
           setError("Failed to log out")
         }
@@ -164,7 +162,7 @@ function Settings() {
 				</form>
 			</div>
 
-			<Navigation active={route}></Navigation>
+			<Navigation active={routes.settings}></Navigation>
 		</>
 	);
 }

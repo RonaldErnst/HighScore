@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import { useRef } from 'react';
-import { withPublic } from '../components/Routing';
+import { routes, withPublic } from '../components/Routing';
 import { useAuth } from '../contexts/AuthContext';
+
+export const route = "/reset-password";
 
 function ResetPassword() {
 	const emailRef = useRef();
@@ -85,13 +87,13 @@ function ResetPassword() {
 
 					<div className="flex items-center flex-row space-x-6">
 						<Link
-							href="/login"
+							href={routes.login}
 							className="text-gray-800 hover:underline"
 						>
 							Login
 						</Link>
 						<Link
-							href="/register"
+							href={routes.register}
 							className="text-gray-800 hover:underline"
 						>
 							Register

@@ -1,9 +1,7 @@
 import Navigation from "../components/navigation";
 import Header from "../components/header";
-import { withPrivate } from "../components/Routing";
+import { routes, withPrivate } from "../components/Routing";
 import { useAuth } from "../contexts/AuthContext";
-
-export const route = "/";
 
 function Home() {
 	const { currentUser } = useAuth();
@@ -37,7 +35,7 @@ function Home() {
 
 
 			</div>
-			<Navigation active={route}></Navigation>
+			<Navigation active={routes.home}></Navigation>
 		</>
 	);
 }

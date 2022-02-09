@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState, useRef } from "react";
-import { withPublic } from "../components/Routing";
+import { routes, withPublic } from "../components/Routing";
 import { useAuth } from '../contexts/AuthContext';
 
 function Login() {
@@ -20,7 +20,7 @@ function Login() {
       setError("");
       setLoading(true);
 			await loginUser(emailRef.current.value, passwordRef.current.value);
-      router.push("/");
+      router.push(routes.home);
     } catch {
       setError("Failed to log in")
     }
@@ -103,12 +103,12 @@ function Login() {
 					</button>
 
 					<div className="flex items-center flex-row space-x-6">
-						<Link href="/register"
+						<Link href={routes.register}
 							className="text-gray-800 hover:underline"
 						>
 							Register
 						</Link>
-						<Link href="/reset-password"
+						<Link href={routes.resetPassword}
 							className="text-gray-800 hover:underline"
 						>
 							Forgot password

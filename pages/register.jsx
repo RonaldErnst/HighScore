@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useRef, useState } from "react";
-import { withPublic } from "../components/Routing";
+import { routes, withPublic } from "../components/Routing";
 import { useAuth } from "../contexts/AuthContext";
 
 function Register() {
@@ -25,7 +25,7 @@ function Register() {
 			setError("");
 			setLoading(true);
 			await registerUser(usernameRef.current.value, emailRef.current.value, passwordRef.current.value);
-			router.push("/");
+			router.push(routes.home);
 		} catch(e) {
 			setError("Failed to create an account");
 		}
@@ -162,13 +162,13 @@ function Register() {
 
 					<div className="flex items-center flex-row space-x-6">
 						<Link
-							href="/login"
+							href={routes.login}
 							className="text-gray-800 hover:underline"
 						>
 							Login
 						</Link>
 						<Link
-							href="/reset-password"
+							href={routes.resetPassword}
 							className="text-gray-800 hover:underline"
 						>
 							Forgot password
