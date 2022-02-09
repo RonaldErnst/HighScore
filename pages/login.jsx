@@ -20,18 +20,20 @@ function Login() {
 			setLoading(true);
 			await loginUser(emailRef.current.value, passwordRef.current.value); // Automatic Redirect to Homepage after login
 			return;
-		} catch(e) {
-			switch(e.code) {
-				case 'auth/invalid-email':
+		} catch (e) {
+			switch (e.code) {
+				case "auth/invalid-email":
 					setError("Bitte E-Mail überprüfen!");
 					break;
-				case 'auth/invalid-password':
-					setError("Passwort ist ungültig! Es muss mindestens 6 Zeichen lang sein!");
+				case "auth/invalid-password":
+					setError(
+						"Passwort ist ungültig! Es muss mindestens 6 Zeichen lang sein!"
+					);
 					break;
-				case 'auth/user-not-found':
-					setError("Benutzer mit dieser E-Mail nicht gefunden")
+				case "auth/user-not-found":
+					setError("Benutzer mit dieser E-Mail nicht gefunden");
 					break;
-				case 'auth/wrong-password':
+				case "auth/wrong-password":
 					setError("Falsches Passwort angegeben");
 					break;
 				default:
@@ -120,23 +122,21 @@ function Login() {
 						<button
 							disabled={loading}
 							type="submit"
-							className="w-1/2 bg-emerald-400 rounded-3xl shadow-2xl text-lg text-center font-semibold p-1"
+							className="w-1/2 bg-emerald-400 hover:bg-emerald-300 hover:text-gray-800 rounded-3xl shadow-2xl text-lg text-center font-semibold p-1"
 						>
 							Login
 						</button>
 
 						<div className="flex items-center flex-row space-x-6">
-							<Link
-								href={routes.register}
-								className="text-gray-800 hover:underline"
-							>
-								Register
+							<Link href={routes.register} passHref={true}>
+								<div className="text-gray-800 hover:underline">
+									Register
+								</div>
 							</Link>
-							<Link
-								href={routes.resetPassword}
-								className="text-gray-800 hover:underline"
-							>
-								Forgot password
+							<Link href={routes.resetPassword} passHref={true}>
+								<div className="text-gray-800 hover:underline">
+									Forgot password
+								</div>
 							</Link>
 						</div>
 					</form>
