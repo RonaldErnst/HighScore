@@ -1,5 +1,5 @@
-import Header from "../components/header";
-import Navigation from "../components/navigation";
+import Header from "../components/Header";
+import Navigation from "../components/Navigation";
 import { routes, withPrivate } from '../components/Routing';
 
 function Friends() {

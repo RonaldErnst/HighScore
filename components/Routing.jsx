@@ -39,3 +39,14 @@ export const routes = {
   friends: "/friends",
   addEntry: "/entries/add",
 }
+
+export const routeTitles = {
+  [routes.home]: "Home",
+  [routes.login]: "Login",
+  [routes.resetPassword]: "Reset Password",
+  [routes.register]: "Register",
+  [routes.settings]: "Settings",
+  [routes.statistics]: "Statistics",
+  [routes.friends]: "Friends",
+  [routes.addEntry]: "Add Entry",
+}

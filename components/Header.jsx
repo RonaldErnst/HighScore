@@ -20,11 +20,11 @@ export default function Header({ highscore }) {
                             "
 		>
             <div className="p-3 m-auto">
-                <div className={`transition-height ${showHighscore? "h-0 hidden" : "h-auto"}`}>
+                <div className={`${showHighscore? "rotateUp" : ""}`}>
                     HighScore
                 </div>
                 {highscore && (
-                <div className={`transition-height ${showHighscore? "h-auto" : "h-0 hidden"}`}>
+                <div className={`${showHighscore? "" : "rotateUp"}`}>
                     {highscore}
                 </div>
             )}

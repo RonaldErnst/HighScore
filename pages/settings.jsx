@@ -1,5 +1,5 @@
-import Navigation from "../components/navigation";
-import Header from "../components/header";
+import Navigation from "../components/Navigation";
+import Header from "../components/Header";
 import { routes, withPrivate } from "../components/Routing";
 import { useAuth } from "../contexts/AuthContext";
 import { useRef, useState } from "react";
