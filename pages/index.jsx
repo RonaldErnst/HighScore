@@ -1,7 +1,6 @@
-import Navigation from "../components/navigation";
-import Button from "../components/button";
-import Header from "../components/header";
-import CustomHead from "../components/head";
+import Navigation from "../components/Navigation";
+import AddButton from "../components/AddButton";
+import Header from "../components/Header";
 import { routes, withPrivate } from "../components/Routing";
 import { useAuth } from "../contexts/AuthContext";
 
@@ -10,7 +9,6 @@ function Home() {
 
 	return (
 		<>
-			<CustomHead/>
 			<Header/>
 			<div className="mt-16 p-3 w-full md:w-1/2 lg:w-1/3 mx-auto flex flex-col space-y-4">
 
@@ -38,7 +36,7 @@ function Home() {
 
 
 			</div>
-			<Button/>
+			<AddButton/>
 			<Navigation active={routes.home}></Navigation>
 		</>
 	);

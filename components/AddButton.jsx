@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { routes } from "./Routing";
 
-export default function Button() {
+export default function AddButton() {
     return (
         <>
             <Link href={routes.addEntry} passHref={true}>
