@@ -32,6 +32,7 @@ export default function AddEntry() {
               <div>
 
                   <h2>Score:</h2>
+
                   <form className="flex flex-col items-center justify-items-center space-y-4">
 
                       <div className="flex flex-row text-xl">
@@ -49,6 +50,17 @@ export default function AddEntry() {
                               <span onClick={handleIncScore}>
                                   <i className="bi bi-plus-lg text-4xl p-2 hover:text-gray-600"></i>
                               </span>
+                          </div>
+
+
+                      </div>
+
+                      <div className="w-full">
+
+                          <h2>Notizen:</h2>
+
+                          <div className="flex grid items-center justify-items-center w-full py-4">
+                              <textarea className="w-3/4 p-1 rounded-xl focus:outline-none border-slate-400 border resize-none" rows="7"></textarea>
                           </div>
 
 
