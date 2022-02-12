@@ -120,42 +120,13 @@ function Settings() {
 								htmlFor="email"
 								className="grid items-center justify-items-center px-2"
 							>
-								<i className="bi bi-envelope"></i>
+								<i className="bi bi-person"></i>
 							</label>
 							<input
 								ref={usernameRef}
 								name="username"
 								type="text"
 								placeholder="Username"
-								className="bg-transparent p-1 focus:outline-none"
-							/>
-						</div>
-					</div>
-
-					<div className="space-y-2">
-						<h2 className="text-md text-slate-700">
-							Name ändern
-						</h2>
-
-						<div
-							className="w-full bg-white
-										rounded-3xl
-										flex flex-row
-										shadow-xl
-										text-lg
-									    border-slate-400 border"
-						>
-							<label
-								htmlFor="name"
-								className="grid items-center justify-items-center px-2"
-							>
-								<i className="bi bi-person"></i>
-							</label>
-							<input
-								ref={emailRef}
-								name="name"
-								type="name"
-								placeholder="Name"
 								className="bg-transparent p-1 focus:outline-none"
 							/>
 						</div>
