@@ -7,7 +7,7 @@ import {
 	signOut,
 	sendPasswordResetEmail,
 	updateEmail,
-	updatePassword
+	updatePassword,
 } from "firebase/auth";
 import { fireauth } from "../firebase";
 
@@ -43,6 +43,12 @@ export function AuthProvider({ children }) {
 		return sendPasswordResetEmail(fireauth, email);
 	}
 
+	function updateUserDisplayname(username) {
+		return updateProfile(fireauth.currentUser, {
+			displayName: username
+		});
+	}
+
 	function updateUserEmail(email) {
 		return updateEmail(fireauth.currentUser, email);
 	}
@@ -68,6 +74,7 @@ export function AuthProvider({ children }) {
 		resetUserPassword,
 		updateUserEmail,
 		updateUserPassword,
+		updateUserDisplayname,
 	};
 
 	return (
