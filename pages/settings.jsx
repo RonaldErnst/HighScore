@@ -120,7 +120,7 @@ function Settings() {
 								htmlFor="email"
 								className="grid items-center justify-items-center px-2"
 							>
-								<i className="bi bi-envelope"></i>
+								<i className="bi bi-person"></i>
 							</label>
 							<input
 								ref={usernameRef}
