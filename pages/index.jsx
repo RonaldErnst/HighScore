@@ -1,6 +1,7 @@
 import Navigation from "../components/Navigation";
 import AddButton from "../components/AddButton";
 import Header from "../components/Header";
+import WeedCard from "../components/Weed/WeedCard";
 import { routes, withPrivate } from "../components/Routing";
 import { useAuth } from "../contexts/AuthContext";
 
@@ -14,15 +15,7 @@ function Home() {
 
 				<p>Hallo {currentUser.displayName}!</p>
 
-				<a>
-					<div className="shadow-md rounded-3xl p-5 border-slate-200 border">
-						<div className="flex flex-row justify-between">
-							<h2>vor 4 Tagen</h2>
-							<span className="border-4 border-emerald-400 py-2 px-3 rounded-3xl shadow">Gras</span>
-						</div>
-						<div className="text-slate-600">Score: 8/10</div>
-					</div>
-				</a>
+				<WeedCard></WeedCard>
 
 				<a>
 					<div className="shadow-md rounded-3xl p-5 border-slate-200 border">
