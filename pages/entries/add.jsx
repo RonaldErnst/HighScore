@@ -59,7 +59,7 @@ export default function AddEntry() {
 
                           <h2>Notizen:</h2>
 
-                          <div className="flex grid items-center justify-items-center w-full py-4">
+                          <div className="grid items-center justify-items-center w-full py-4">
                               <textarea className="w-3/4 p-1 rounded-xl focus:outline-none border-slate-400 border resize-none" rows="7"></textarea>
                           </div>
 
