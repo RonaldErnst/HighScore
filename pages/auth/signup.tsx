@@ -3,10 +3,16 @@ import { useState } from "react";
 import type { NextPage } from "next";
 import Router from "next/router";
 import { FormikHelpers } from "formik";
-import { userSignUpSchema, withPageNoAuth } from "@lib/auth";
+import { SessionUser, userSignUpSchema, withPageNoAuth } from "@lib/auth";
 import * as Yup from "yup";
 import YupPassword from "yup-password";
+import { useUser } from "@lib/utils";
 YupPassword(Yup);
+
+type SignupResponse = {
+    message?: string;
+    user?: SessionUser;
+}
 
 export const getServerSideProps = withPageNoAuth();
 
@@ -19,13 +25,13 @@ async function createUser(username: string, email: string, password: string) {
 		},
 	});
 
-	const data = await response.json();
+	const {message, user}: SignupResponse = await response.json();
 
-	if (!response.ok) {
-		throw new Error(data.message || "Something went wrong!");
+	if (!response.ok || user === undefined) {
+		throw new Error(message || "Something went wrong!");
 	}
 
-	return data;
+	return user;
 }
 
 type ISignUpValues = {
@@ -36,6 +42,7 @@ type ISignUpValues = {
 };
 
 const SignUp: NextPage = () => {
+    const { mutateUser } = useUser();
 	const [error, setError] = useState("");
 
 	const validationSchema = userSignUpSchema.concat(Yup.object({
@@ -58,7 +65,10 @@ const SignUp: NextPage = () => {
         setError("");
 
 		try {
-			await createUser(values.username, values.email, values.password);
+			const user = await createUser(values.username, values.email, values.password);
+
+            mutateUser(user);
+            
             Router.push("/");
 		} catch (error) {
             const { message } = error as any;

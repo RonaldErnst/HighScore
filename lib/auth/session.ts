@@ -13,11 +13,10 @@ import {
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 export type SessionUser = {
-    id: string;
-    username: string;
-    role: string;
-    lastOnline: Date;
-}
+	id: string;
+	username: string;
+	lastOnline: Date;
+};
 
 declare module "iron-session" {
 	interface IronSessionData {
@@ -78,12 +77,13 @@ export function withApiNoAuth(handler?: NextApiHandler) {
 export async function saveUserSession(session: IronSession, user: IUser) {
 	session.user = {
 		id: user.id,
-        username: user.username,
-        role: user.role,
-        lastOnline: user.lastOnline,
+		username: user.username,
+		lastOnline: user.lastOnline,
 	};
 
 	await session.save();
+
+	return session.user;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -94,17 +94,14 @@ function withPageSession(handler: GetServerSideProps) {
 	return withIronSessionSsr(handler, sessionOptions);
 }
 
-export function withPageAuth(
-	handler?: GetServerSideProps,
-	returnTo?: string
-) {
+export function withPageAuth(handler?: GetServerSideProps, returnTo?: string) {
 	return withPageSession(async function (
 		context: GetServerSidePropsContext
 	): Promise<GetServerSidePropsResult<any>> {
 		const { req } = context;
 		const user = req.session.user;
 
-        // User not logged in or authenticated, redirect
+		// User not logged in or authenticated, redirect
 		if (user === undefined) {
 			return {
 				redirect: {
@@ -134,17 +131,14 @@ export function withPageAuth(
 	});
 }
 
-export function withPageNoAuth(
-	handler?: GetServerSideProps
-) {
-    return withPageSession(async function (
+export function withPageNoAuth(handler?: GetServerSideProps) {
+	return withPageSession(async function (
 		context: GetServerSidePropsContext
 	): Promise<GetServerSidePropsResult<any>> {
-
 		const { req } = context;
 		const user = req.session.user;
 
-        // User logged in, redirect
+		// User logged in, redirect
 		if (user !== undefined) {
 			return {
 				redirect: {

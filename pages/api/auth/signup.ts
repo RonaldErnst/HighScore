@@ -62,8 +62,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 		await newUser.save();
 
 		// Save session
-		await saveUserSession(req.session, newUser);
-		res.status(201).json({ message: "Created user!", user: newUser });
+		const sessionUser = await saveUserSession(req.session, newUser);
+		res.status(201).json({ message: "Created user!", user: sessionUser });
 	} finally {
 		dbClient.connection.close();
 	}

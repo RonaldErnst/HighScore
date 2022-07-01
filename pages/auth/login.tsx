@@ -4,7 +4,8 @@ import { FormikHelpers } from "formik";
 import * as Yup from "yup";
 import AuthForm from "@components/AuthForm";
 import { useState } from "react";
-import { withPageNoAuth } from "@lib/auth";
+import { withPageNoAuth, SessionUser } from "@lib/auth";
+import { useUser } from "@lib/utils";
 
 export const getServerSideProps = withPageNoAuth();
 
@@ -13,9 +14,15 @@ type ILoginValues = {
 	password: string;
 };
 
+type LoginResponse = {
+	message?: string;
+	user?: SessionUser;
+};
+
 const Login: NextPage = () => {
 	const [error, setError] = useState("");
 	const router = useRouter();
+	const { mutateUser } = useUser();
 
 	const validationSchema = Yup.object({
 		username: Yup.string().required("Required"),
@@ -44,13 +51,16 @@ const Login: NextPage = () => {
 				body: JSON.stringify(body),
 			});
 
-			if (!response.ok) {
-				const { message } = await response.json();
-				if (message !== null && message !== undefined)
+			const { message, user }: LoginResponse = await response.json();
+
+			if (!response.ok || user === undefined) {
+				if (message !== undefined)
 					setError(message);
 				else setError("There has been an error logging you in");
 				return;
 			}
+
+			mutateUser(user);
 
 			if (router.query.returnTo !== undefined)
 				router.push(router.query.returnTo as string);

@@ -46,15 +46,21 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 		}
 
 		const isValid = await verifyPassword(password, user.password);
-        
+
 		if (!isValid) {
 			res.status(401).json({ message: "Wrong user or password!" });
 			return;
 		}
 
-		await saveUserSession(req.session, user);
+        user.lastOnline = new Date();
+        await user.save();
 
-		res.status(201).json({ message: "User succesfully logged in" });
+		const sessionUser = await saveUserSession(req.session, user);
+
+		res.status(201).json({
+			message: "User succesfully logged in",
+			user: sessionUser,
+		});
 	} finally {
 		await dbClient.connection.close();
 	}
